@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Application.Handler;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -13,11 +14,9 @@ namespace Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             var assembly = typeof(DependencyInjection).Assembly;
-
+            services.AddScoped<IMessageHandler, MessageHandler>();
             services.AddMediatR(configuration => configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly));
-
             services.AddValidatorsFromAssembly(assembly);
-
             return services;
         }
     }
