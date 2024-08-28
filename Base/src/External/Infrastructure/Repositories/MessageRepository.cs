@@ -1,15 +1,16 @@
 ﻿using Domain.Entities;
 using Domain.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
     public class MessageRepository : IMessageRepository
     {
+        private readonly DbContext _dbContext;
+        public MessageRepository()
+        {
+            
+        }
         public Task<Message> GetByIdAsync(int id)
         {
             throw new NotImplementedException();

@@ -1,11 +1,8 @@
 ﻿using Application.Handler;
+using Domain.Repositories;
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application
 {
@@ -15,6 +12,10 @@ namespace Application
         {
             var assembly = typeof(DependencyInjection).Assembly;
             services.AddScoped<IMessageHandler, MessageHandler>();
+            //services.AddDbContext<DbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            //services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddMediatR(configuration => configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly));
             services.AddValidatorsFromAssembly(assembly);
             return services;
