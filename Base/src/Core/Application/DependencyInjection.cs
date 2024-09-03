@@ -1,7 +1,5 @@
 ﻿using Application.Handler;
-using Domain.Repositories;
 using FluentValidation;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application
@@ -12,9 +10,6 @@ namespace Application
         {
             var assembly = typeof(DependencyInjection).Assembly;
             services.AddScoped<IMessageHandler, MessageHandler>();
-            //services.AddDbContext<DbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddMediatR(configuration => configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly));
             services.AddValidatorsFromAssembly(assembly);
             return services;
