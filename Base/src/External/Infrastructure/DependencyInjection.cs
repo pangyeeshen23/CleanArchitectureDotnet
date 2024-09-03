@@ -1,4 +1,5 @@
 ﻿using Domain.Repositories;
+using Infrastructure.Context;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -12,7 +13,7 @@ namespace Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration config)
         {
             services.AddScoped<IMessageRepository, MessageRepository>();
-            services.AddDbContext<DbContext>(options =>
+            services.AddDbContext<MyDbContext>(options =>
                 options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
             return services;
         }

@@ -10,9 +10,9 @@ namespace Application.Handler
         {
             _messageRepository = messageRepository;
         }
-        public async Task<Message> GetMessage()
+        public async Task<List<Message>> GetMessages()
         {
-            return await _messageRepository.GetByIdAsync(1);
+            return await _messageRepository.GetAllAsync();
         }
     }
 }

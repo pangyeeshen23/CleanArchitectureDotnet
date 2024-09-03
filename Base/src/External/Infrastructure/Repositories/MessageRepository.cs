@@ -1,19 +1,20 @@
 ﻿using Domain.Entities;
 using Domain.Repositories;
+using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
     public class MessageRepository : IMessageRepository
     {
-        private readonly DbContext _dbContext;
-        public MessageRepository()
+        private readonly MyDbContext _dbContext;
+        public MessageRepository(MyDbContext dbContext)
         {
-            
+            _dbContext = dbContext;
         }
-        public Task<Message> GetByIdAsync(int id)
+        public async Task<List<Message>> GetAllAsync()
         {
-            return Task.FromResult(new Message { Id = 1, Body = "Message" });
+            return await _dbContext.Messages.ToListAsync();
         }
     }
 }

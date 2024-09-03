@@ -15,10 +15,18 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
-        public List<MessageDto> Get()
+        public async Task<List<MessageDto>> GetAll()
         {
-            _messageHandler.GetMessage();
-            return new List<MessageDto>();
+            var message = await _messageHandler.GetMessages();
+
+            return new List<MessageDto>()
+            {
+                new MessageDto() {
+                    Id = message.First().Id,
+                    Title = message.First().Title,
+                    Message = message.First().Body,
+                }
+            };
         }
     }
 }

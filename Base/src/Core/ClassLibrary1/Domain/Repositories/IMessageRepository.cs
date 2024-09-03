@@ -9,6 +9,6 @@ namespace Domain.Repositories
 {
     public interface IMessageRepository
     {
-        Task<Message> GetByIdAsync(int id);
+        Task<List<Message>> GetAllAsync();
     }
 }

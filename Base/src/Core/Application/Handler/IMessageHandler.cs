@@ -4,6 +4,6 @@ namespace Application.Handler
 {
     public interface IMessageHandler
     {
-        public Task<Message> GetMessage();
+        public Task<List<Message>> GetMessages();
     }
 }
