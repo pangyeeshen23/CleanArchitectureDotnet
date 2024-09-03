@@ -13,7 +13,7 @@ namespace Infrastructure.Repositories
         }
         public Task<Message> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(new Message { Id = 1, Body = "Message" });
         }
     }
 }

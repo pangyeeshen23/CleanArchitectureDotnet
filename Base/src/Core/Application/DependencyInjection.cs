@@ -15,7 +15,6 @@ namespace Application
             //services.AddDbContext<DbContext>(options =>
             //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            //services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddMediatR(configuration => configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly));
             services.AddValidatorsFromAssembly(assembly);
             return services;

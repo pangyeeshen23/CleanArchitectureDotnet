@@ -10,7 +10,7 @@ namespace Presentation
     public static class DependencyInjection
     {
 
-        public static IServiceCollection AddPresentatin(this IServiceCollection services)
+        public static IServiceCollection AddPresentation(this IServiceCollection services)
         {
             return services;
         }
